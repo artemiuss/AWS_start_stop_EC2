@@ -12,7 +12,7 @@ case "$1" in
      if [ -n "$EC2_STOPPED_INSTANCES" ]
        then 
          echo "Starting EC2 instances: ${EC2_STOPPED_INSTANCES}"
-         AWS_OUTPUT=$(aws ec2 start-instances --instance-ids ${EC2_STOPPED_INSTANCES[@]})
+         AWS_OUTPUT=$(aws ec2 start-instances --instance-ids ${EC2_STOPPED_INSTANCES})
          echo "${AWS_OUTPUT}"
        else 
          echo "There are no stopped EC2 instances"
@@ -24,7 +24,7 @@ case "$1" in
      if [ -n "$EC2_RUNNING_INSTANCES" ]
        then 
          echo "Stopping EC2 instances: ${EC2_RUNNING_INSTANCES}"
-         AWS_OUTPUT=$(aws ec2 stop-instances --instance-ids ${EC2_RUNNING_INSTANCES[@]})
+         AWS_OUTPUT=$(aws ec2 stop-instances --instance-ids ${EC2_RUNNING_INSTANCES})
          echo "${AWS_OUTPUT}"         
        else
          echo "There are no running EC2 instances"
@@ -35,7 +35,6 @@ case "$1" in
      exit 1
      ;;
 esac
-
 
 
 
